@@ -12,6 +12,13 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
+                curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+                nvm install node 
+                npm install -g npx
+                npx degit solidjs/templates/ts my-app
+                cd my-app
+                npm i # or yarn or pnpm
+                npm run dev # or yarn or pnpm
                 cd myapp
                 pip install -r requirements.txt
                 '''
